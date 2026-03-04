@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - FitFuel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <h2 id="welcomeUser">Welcome</h2>
+
+    <h3>Workout Counter</h3>
+    <h1 id="counter">0</h1>
+
+    <button onclick="sendWorkout()">Complete Workout</button>
+
+    <br><br>
+    <button onclick="logout()" style="background:red;">Logout</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Show user name
+    document.getElementById("welcomeUser").innerText =
+      "Welcome, " + localStorage.getItem("name");
+
+    // Protect page
+    if (!localStorage.getItem("token")) {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
